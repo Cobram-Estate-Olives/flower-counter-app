@@ -151,7 +151,7 @@ input[type="text"] {
 
 select {
     width: 96%; /* Full-width input fields */
-    height: 28px; /* Padding inside the input */
+    height: 30px; /* Padding inside the input */
     padding-left: 4px;
     padding-top: 2px;
     padding-bottom: 2px;
