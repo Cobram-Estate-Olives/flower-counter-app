@@ -131,9 +131,12 @@
                 <div class="input-group">
                     <input type="text" id="block" placeholder="Block">
                 </div>
+                <div class="input-group">
+                <input type="text" id="row" placeholder="Row">
+            </div>
             <div class="input-group">
                 <select id="plantingYear" required>
-                    <option value="" disabled selected>Planting Year</option>
+                    <option value="" disabled selected>Planted</option>
                   </select>
 
                   <script>
@@ -149,20 +152,7 @@
            
             
             </div>
-            <div class="input-group-block-row-direction">
-            <div class="input-group">
-                <input type="text" id="row" placeholder="Row">
-            </div>
-            <div class="input-group">
-                <select required id="direction" placeholder="Starting From">
-                    <option value="" selected disabled>Start From</option>
-                    <option>North</option>
-                    <option>South</option>
-                    <option>East</option>
-                    <option>West</option>
-                </select>
-            </div>
-        </div>
+
         
         </div>
 
@@ -199,8 +189,8 @@
                     <th>Planting Year</th>
                     <th>Block</th>
                     <th>Row</th>
-                    <th>Starting From</th>
                     <th>Name</th>
+                    <th>GPS</th>
                 </tr>
             </thead>
             <tbody>

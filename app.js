@@ -46,17 +46,7 @@ document.getElementById('button2').addEventListener('click', () => logCount(2));
 document.getElementById('button3').addEventListener('click', () => logCount(3));
 document.getElementById('button4').addEventListener('click', () => logCount(4));
 
-//Beep sound
 
-function playBeep() {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    const oscillator = ctx.createOscillator();
-    oscillator.type = "square";
-    oscillator.frequency.setValueAtTime(880, ctx.currentTime);
-    oscillator.connect(ctx.destination);
-    oscillator.start();
-    oscillator.stop(ctx.currentTime + 0.1);
-  }
 
 // Function to log counts offline
 function logCount(value) {
@@ -66,7 +56,7 @@ function logCount(value) {
     const plantingYear = document.getElementById('plantingYear').value;
     const block = document.getElementById('block').value;
     const row = document.getElementById('row').value;
-    const direction = document.getElementById('direction').value;
+    
 
     if (name && managementArea && variety && block && row) {
         const now = new Date();
@@ -85,7 +75,6 @@ function logCount(value) {
         plantingYear,
         block,
         row,
-        direction,
         value,
         timestamp: localTimestamp,
         gps: currentLocation ? `${currentLocation.latitude.toFixed(6)}, ${currentLocation.longitude.toFixed(6)}` : "No GPS"
@@ -95,7 +84,6 @@ function logCount(value) {
         localStorage.setItem('offlineData', JSON.stringify(offlineData));
 
         navigator.vibrate(100);
-        playBeep();
     } else {
         alert("Please fill out all fields.");
     }
@@ -111,9 +99,9 @@ function downloadData() {
     }
 
     const csvContent = "data:text/csv;charset=utf-8,"
-        + ["Timestamp,Name,Management Area,Variety,Planting Year,Block,Row,Direction,Value"]
+        + ["Timestamp,Name,Management Area,Variety,Planting Year,Block,Row,Value"]
         + "\n"
-        + offlineData.map(entry => `${entry.timestamp},${entry.name},${entry.managementArea},${entry.variety},${entry.plantingYear},${entry.block},${entry.row},${entry.direction},${entry.value}`).join("\n");
+        + offlineData.map(entry => `${entry.timestamp},${entry.name},${entry.managementArea},${entry.variety},${entry.plantingYear},${entry.block},${entry.row},${entry.value}`).join("\n");
 
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
@@ -134,10 +122,10 @@ function downloadData() {
     }
     //GPS change
     const csvContent = "data:text/csv;charset=utf-8,"
-  + ["Timestamp,Name,Management Area,Variety,Planting Year,Block,Row,Direction,Value,GPS"]
+  + ["Timestamp,Name,Management Area,Variety,Planting Year,Block,Row,Value,GPS"]
   + "\n"
   + offlineData.map(entry => 
-      `${entry.timestamp},${entry.name},${entry.managementArea},${entry.variety},${entry.plantingYear},${entry.block},${entry.row},${entry.direction},${entry.value},${entry.gps}`
+      `${entry.timestamp},${entry.name},${entry.managementArea},${entry.variety},${entry.plantingYear},${entry.block},${entry.row},${entry.value},${entry.gps}`
     ).join("\n");
 
     //GPS change
@@ -208,11 +196,12 @@ function populateTable() {
             const rowCell = row.insertCell(7);
             rowCell.innerHTML = `<input value="${entry.row}" onchange="updateEntry(${realIndex}, 'row', this.value)" />`;
 
-            const directionCell = row.insertCell(8);
-            directionCell.innerHTML = `<input value="${entry.direction}" onchange="updateEntry(${realIndex}, 'direction', this.value)" />`;
-
-            const nameCell = row.insertCell(9);
+            const nameCell = row.insertCell(8);
             nameCell.innerHTML = `<input value="${entry.name}" onchange="updateEntry(${realIndex}, 'name', this.value)" />`;
+
+            const gpsCell = row.insertCell(9);
+            gpsCell.innerHTML = `<input value="${entry.gps}" onchange="updateEntry(${realIndex}, 'gps', this.value)" />`;
+
 
             
         });
@@ -297,4 +286,9 @@ document.getElementById("changeGroveButton").addEventListener("click", () => {
     mainPage.style.display = "none";
     groveSelectionPage.style.display = "block";
   });
+
+  document.addEventListener("touchstart", () => {}, true);
+
+
+
   
