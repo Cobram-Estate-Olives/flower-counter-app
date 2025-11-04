@@ -172,7 +172,7 @@ function populateTable() {
 
             // 🗑️ First column — delete button (uses realIndex)
             const deleteCell = row.insertCell(0);
-            deleteCell.innerHTML = `<button onclick="deleteEntry(${realIndex})" style="background:none;color:#e63946;border:none;font-size:18px;cursor:pointer;">✖</button>`;
+            deleteCell.innerHTML = `<button class="delete-x" onclick="deleteEntry(${realIndex})">✖</button>`;
 
             // Editable data cells (shifted one index right)
             const timestampCell = row.insertCell(1);

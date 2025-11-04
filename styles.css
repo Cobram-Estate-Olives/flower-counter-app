@@ -42,6 +42,22 @@ button {
     margin-bottom: 20px;
 }
 
+.delete-x {
+  background: none;
+  border: none;
+  color: #e63946;
+  font-size: 18px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.delete-x:active {
+  color: #ff4d4d;
+  transform: scale(0.9);
+  transition: transform 0.1s, color 0.1s;
+}
+
 #groveButtons {
     display: flex;
     flex-direction: column;
@@ -60,6 +76,7 @@ button {
     border-radius: 50px;
     cursor: pointer;
     width: 100%;
+    transition: background-color 0.25s ease;
   }
   
   .grove-btn:hover {
@@ -236,7 +253,7 @@ input[type="text"]:focus {
     color: white;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.25s ease box-shadow 0.25s ease transform 0.25s ease;
     width: 100%;
     height: 140px;
     box-sizing: border-box;
@@ -244,7 +261,7 @@ input[type="text"]:focus {
 
 .counter-button::after {
     background-color: #4e622d; /* darker green when pressed */
-    transform: scale(0.96);
+    
 }
 
 .counter-button:active {
@@ -253,9 +270,7 @@ input[type="text"]:focus {
     transform: scale(0.96);
 }
 
-.counter-button:hover {
-    background-color: #4e622d;
-}
+
 
 .button {
   -webkit-tap-highlight-color: transparent;
