@@ -62,10 +62,20 @@ button {
     width: 100%;
   }
   
-  .grove-btn:hover,
-  .grove-btn:active {
-    background-color: #5e8f55;
+  .grove-btn:hover {
+    background-color: #4e622d;
   }
+
+  .grove-btn::after {
+    background-color: #4e622d; /* darker green when pressed */
+    transform: scale(0.96);
+}
+
+.grove-btn:active {
+    background-color: #4e622d;
+    box-shadow: 3px 3px 8px #2a4127;
+    transform: scale(0.96);
+}
 
   .change_grove_btn {
     border: none;
@@ -241,6 +251,10 @@ input[type="text"]:focus {
     background-color: #4e622d;
     box-shadow: 3px 3px 8px #2a4127;
     transform: scale(0.96);
+}
+
+.counter-button:hover {
+    background-color: #4e622d;
 }
 
 .button {
