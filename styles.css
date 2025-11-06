@@ -84,13 +84,12 @@ button {
   }
 
   .grove-btn::after {
-    background-color: #4e622d; /* darker green when pressed */
+    background-color: #374520; /* darker green when pressed */
     transform: scale(0.96);
 }
 
 .grove-btn:active {
-    background-color: #4e622d;
-    box-shadow: 3px 3px 8px #2a4127;
+    background-color: #374520;
     transform: scale(0.96);
 }
 
